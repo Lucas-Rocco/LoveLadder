@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#170e20">
+<title>Uma surpresa para Ana ✦</title>
+<style>
+:root{--bg:#170e20;--panel:#24162d;--panel2:#301b36;--rose:#ff91b5;--rose2:#ffbfd2;--cream:#fff4f5;--muted:#c8adbf;--gold:#f3d8a0;--line:#ffffff1c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;overflow-x:hidden}
+button{font:inherit}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;background:radial-gradient(ellipse at 18% 15%,#70304b4a,transparent 36%),radial-gradient(ellipse at 85% 75%,#673c7a35,transparent 35%),linear-gradient(145deg,#170e20,#211329 55%,#170e20)}
+.orb{position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(90px);opacity:.22;background:#ff6599;animation:drift 13s ease-in-out infinite alternate}
+.orb:nth-child(1){top:-140px;left:-100px}.orb:nth-child(2){right:-140px;bottom:-100px;background:#a76bd1;animation-delay:-5s}
+.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.5px);background-size:77px 77px;opacity:.12;mask-image:linear-gradient(to bottom,#000,transparent 95%)}
+main{position:relative;z-index:1;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.shell{width:min(100%,780px);margin:auto}
+.topline{display:flex;align-items:center;justify-content:space-between;color:#d6b9ca;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;margin:0 4px 18px}
+.status{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:var(--rose);box-shadow:0 0 12px var(--rose)}
+.panel{position:relative;overflow:hidden;border:1px solid #ffffff20;border-radius:28px;background:linear-gradient(145deg,#2c1b35ed,#1f1428f5);box-shadow:0 28px 100px #0005;min-height:540px}
+.panel:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(125deg,#ffffff08,transparent 38%);border-radius:inherit}
+.progress{height:3px;background:#ffffff0b}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width .7s ease}
+.scene{display:none;padding:clamp(26px,6vw,64px);min-height:536px;position:relative;animation:fadeup .65s ease both}.scene.active{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.kicker{color:var(--rose);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 18px}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.035em;line-height:1.08;margin:0;color:var(--cream)}
+h1{font-size:clamp(2.8rem,8vw,5.4rem)}h2{font-size:clamp(2.2rem,6vw,3.7rem)}
+h1 em,h2 em{font-weight:400;color:var(--rose);font-style:italic}
+p{line-height:1.85;color:#d8c4d2;max-width:540px;margin:20px auto 0;font-size:1.02rem}
+.subtle{font-size:.86rem;color:#a990a3}
+.cta{border:1px solid #ffb4cc55;color:#261421;background:linear-gradient(135deg,#ffc0d4,#ff8db3);border-radius:999px;padding:14px 23px;font-weight:750;cursor:pointer;margin-top:30px;box-shadow:0 10px 35px #ff78a326;transition:transform .2s,filter .2s;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.cta:hover{transform:translateY(-3px);filter:brightness(1.06)}.cta:active{transform:scale(.98)}
+.secondary{background:#ffffff08;color:var(--cream);border:1px solid #ffffff25;box-shadow:none}
+.envelope-wrap{width:155px;height:130px;position:relative;margin:0 auto 30px;cursor:pointer;filter:drop-shadow(0 18px 24px #0003);transition:transform .3s}
+.envelope-wrap:hover{transform:translateY(-5px) rotate(-2deg)}
+.envelope{position:absolute;inset:27px 0 0;background:#d96f94;border-radius:5px 5px 12px 12px;overflow:hidden}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#f5a9c1,#c44d7a);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.flap{position:absolute;top:27px;left:0;width:100%;height:76px;background:#ffb4cc;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s;z-index:3}
+.letter{position:absolute;left:17px;right:17px;top:8px;height:88px;background:#fff2f5;border-radius:5px;z-index:2;display:grid;place-items:center;color:#b33e6b;font-size:1.8rem;transition:transform .7s}
+.envelope-wrap.open .flap{transform:rotateX(180deg)}.envelope-wrap.open .letter{transform:translateY(-52px)}
+.big-heart{font-size:2rem;color:var(--rose);text-shadow:0 0 30px #ff82b65c;animation:pulse 2s infinite}
+.choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:570px;margin-top:30px}
+.choice{min-height:155px;border:1px solid #ffffff20;border-radius:18px;background:#ffffff06;color:var(--cream);padding:20px 12px;cursor:pointer;transition:.25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.choice:hover,.choice.selected{border-color:#ff91b5a6;background:#ff91b510;transform:translateY(-4px)}
+.choice .emoji{font-size:2rem}.choice strong{font-family:Georgia,serif;font-size:1.15rem;font-weight:400}.choice small{color:#bda5b8;line-height:1.5}
+.reveal-note{max-width:520px;border:1px solid #ff91b53d;background:#ff91b50c;border-radius:18px;padding:20px 24px;margin-top:20px;display:none;animation:fadeup .4s ease}.reveal-note.show{display:block}.reveal-note p{margin:0}
+.memory-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;margin-top:28px}
+.memory{padding:20px 12px;border-radius:17px;border:1px solid var(--line);background:#ffffff06}.memory span{font-size:1.5rem;display:block;margin-bottom:10px}.memory strong{display:block;color:var(--rose2);font-size:.92rem}.memory small{display:block;color:#bda5b8;margin-top:6px;line-height:1.5}
+.quote{font-family:Georgia,serif;font-size:clamp(1.45rem,4vw,2.15rem);line-height:1.55;color:#ffe6ed;max-width:570px;margin:25px auto}.quote em{color:var(--rose);font-weight:400}
+.final-heart{font-size:4rem;animation:pulse 2s infinite;filter:drop-shadow(0 0 22px #ff82b64c);margin-bottom:18px}
+.final-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.back{position:absolute;left:24px;top:22px;background:transparent;border:0;color:#bda5b8;cursor:pointer;font-size:.83rem;padding:8px}.back:hover{color:white}
+.footnote{margin-top:17px;text-align:center;color:#8e758b;font-size:.72rem;letter-spacing:.04em}
+.petal{position:fixed;top:-30px;z-index:5;pointer-events:none;animation:fall linear forwards;color:#ff9bbb;text-shadow:0 3px 12px #ff7ba433}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;background:#fff0f5;color:#6f294a;border-radius:999px;padding:12px 18px;font-size:.9rem;z-index:10;transition:.3s;pointer-events:none;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes fadeup{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes drift{to{transform:translate(55px,35px) scale(1.2)}}
+@keyframes fall{to{transform:translate3d(var(--sway),110vh,0) rotate(540deg);opacity:.1}}
+@media(max-width:560px){main{padding:14px 10px}.topline{font-size:.62rem}.panel{border-radius:22px;min-height:570px}.scene{padding:48px 22px 32px;min-height:566px}.choice-grid{grid-template-columns:1fr;gap:9px}.choice{min-height:auto;flex-direction:row;text-align:left;justify-content:flex-start;padding:14px 17px}.choice .emoji{width:42px;text-align:center}.choice small{display:block}.memory-row{grid-template-columns:1fr;gap:9px}.memory{display:flex;align-items:center;text-align:left;gap:13px;padding:13px}.memory span{margin:0}.memory small{margin-top:3px}.memory div{flex:1}.back{top:12px;left:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><div class="orb"></div><div class="orb"></div><div class="stars"></div></div>
+<main>
+<div class="shell">
+  <div class="topline"><span>✦ uma pequena experiência</span><span class="status"><i class="dot"></i> feita para Ana</span></div>
+  <section class="panel" aria-label="Experiência romântica interativa">
+    <div class="progress"><span id="progressBar"></span></div>
+
+    <section class="scene active" data-scene="0">
+      <p class="kicker">Você recebeu algo especial</p>
+      <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Abrir a carta">
+        <div class="envelope"></div><div class="letter">♡</div><div class="flap"></div>
+      </div>
+      <h1>Ana, isso é<br><em>para você.</em></h1>
+      <p>Não é só uma mensagem. É um cantinho que eu preparei para te dizer algumas coisas com calma — do meu jeito, e com carinho.</p>
+      <button class="cta" id="openBtn">Abrir sua surpresa <span>↗</span></button>
+      <div class="subtle" style="margin-top:15px">uma experiência curtinha,mas feita com carinho, espero que voce goste S2 </div>
+    </section>
+
+    <section class="scene" data-scene="1">
+      <button class="back" data-back>← voltar</button>
+      <p class="kicker">Antes de qualquer coisa</p>
+      <h2>Tem gente que chega<br>e deixa tudo <em>mais bonito.</em></h2>
+      <p>Às vezes, uma pessoa começa a aparecer nos nossos pensamentos sem fazer esforço. Uma lembrança boba, momentos felizes jogando juntos, a vontade de saber como foi o seu dia, mesmo que sendo sempre chato kkkkk.</p>
+      <p>E, quando a gente percebe, aquela pessoa já ganhou um espaço especial.</p>
+      <button class="cta" data-next>Tem mais… <span>♡</span></button>
+    </section>
+
+    <section class="scene" data-scene="2">
+      <button class="back" data-back>← voltar</button>
+      <p class="kicker">Um detalhe sobre você</p>
+      <h2>Escolha uma <em>flor.</em></h2>
+      <p>Cada uma guarda um pedacinho do que eu queria te dizer. Toque na que chamar sua atenção. 🌷</p>
+      <div class="choice-grid">
+        <button class="choice" data-flower="0"><span class="emoji">🌷</span><strong>Admiração</strong><small>O que eu vejo em você</small></button>
+        <button class="choice" data-flower="1"><span class="emoji">🌻</span><strong>Seu futuro</strong><small>Os sonhos que te esperam</small></button>
+        <button class="choice" data-flower="2"><span class="emoji">🌹</span><strong>Uma vontade</strong><small>O que eu imagino para nós</small></button>
+      </div>
+      <div class="reveal-note" id="flowerNote" aria-live="polite"><p id="flowerText"></p></div>
+      <button class="cta" data-next>Continuar a surpresa <span>→</span></button>
+    </section>
+
+    <section class="scene" data-scene="3">
+      <button class="back" data-back>← voltar</button>
+      <p class="kicker">Coisas que desejo para você</p>
+      <h2>Que a vida te leve<br>a lugares <em>lindos.</em></h2>
+      <p>Eu sei que você tem seus próprios caminhos, sonhos e planos. E tem algo muito bonito em ver alguém construindo o próprio futuro.</p>
+      <div class="memory-row">
+        <div class="memory"><span>⚖️</span><div><strong>Uma grande advogada</strong><small>Que você conquiste tudo aquilo pelo que se dedicar.</small></div></div>
+        <div class="memory"><span>🏃‍♀️</span><div><strong>Seu caminho na educação física</strong><small>Que nunca falte energia para buscar o que te faz feliz.</small></div></div>
+        <div class="memory"><span>✨</span><div><strong>Acima de tudo, você</strong><small>Que seus planos tenham espaço para alegria, leveza e boas surpresas.</small></div></div>
+      </div>
+      <button class="cta" data-next>Agora, uma coisa minha… <span>♡</span></button>
+    </section>
+
+    <section class="scene" data-scene="4">
+      <button class="back" data-back>← voltar</button>
+      <p class="kicker">Uma confissão tranquila</p>
+      <h2>Eu gosto da ideia<br>de um dia existir <em>“nós”.</em></h2>
+      <div class="quote">Um dia simples, boas conversas, risadas bobas… e a felicidade de pensar: <em>“que bom que a gente se encontrou.”</em></div>
+      <p>Não é uma cobrança, nem uma pressa. Eu não sei o que o futuro guarda — só quis dividir com você um sentimento sincero e uma vontade bonita.</p>
+      <button class="cta" data-next>Cheguei à última parte <span>♡</span></button>
+    </section>
+
+    <section class="scene" data-scene="5">
+      <p class="kicker">Só mais uma coisinha</p>
+      <div class="final-heart">♡</div>
+      <h2>Ana Salles,<br><em>fica aqui uma pergunta…</em></h2>
+      <p>Você toparia continuar me deixando te conhecer, sem pressa, e ver onde essa história pode chegar?</p>
+      <div class="final-actions">
+        <button class="cta" id="yesBtn">Vamos descobrir? 💗</button>
+        <button class="cta secondary" id="againBtn">Ler tudo de novo ↺</button>
+      </div>
+      <p class="subtle" style="font-size:.82rem;margin-top:24px">Seja qual for sua resposta, o carinho com que fiz isso é de verdade. 🌷</p>
+    </section>
+  </section>
+  <div class="footnote">feito com carinho · para Ana Salles ✧</div>
+</div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const bar=document.getElementById('progressBar');
+let current=0;
+function showScene(n){
+  current=Math.max(0,Math.min(scenes.length-1,n));
+  scenes.forEach((s,i)=>{s.classList.toggle('active',i===current);});
+  bar.style.width=(current/(scenes.length-1)*100)+'%';
+  if(current===5) petals(12);
+}
+function next(){showScene(current+1)}
+document.getElementById('openBtn').addEventListener('click',()=>{document.getElementById('envelope').classList.add('open');petals(14);setTimeout(()=>showScene(1),420)});
+document.getElementById('envelope').addEventListener('click',()=>document.getElementById('openBtn').click());
+document.getElementById('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById('openBtn').click()}});
+document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',next));
+document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>showScene(current-1)));
+const flowerMessages=[
+  'Eu admiro a pessoa que você é e o jeito como, mesmo sem perceber, consegue despertar sentimentos bonitos. Tem algo especial em você que eu quis transformar nesta pequena surpresa.',
+  'Imagino você conquistando seus objetivos, celebrando cada vitória e olhando para trás com orgulho do caminho que percorreu. Torço para que seu futuro seja tão bonito quanto os sonhos que você carrega.',
+  'Eu sonho que, um dia, a vida dê um jeitinho de colocar nós dois lado a lado. Sem roteiro perfeito: só conversa boa, risadas sinceras e a chance de construir algo bonito, um passo de cada vez.'
+];
+document.querySelectorAll('[data-flower]').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('[data-flower]').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('flowerText').textContent=flowerMessages[Number(btn.dataset.flower)];
+  document.getElementById('flowerNote').classList.add('show');
+  petals(5);
+}));
+const toast=document.getElementById('toast');
+function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),3800)}
+document.getElementById('yesBtn').addEventListener('click',()=>{showToast('Então que a gente descubra isso com calma. 💗');petals(24)});
+document.getElementById('againBtn').addEventListener('click',()=>{document.getElementById('envelope').classList.remove('open');document.querySelectorAll('[data-flower]').forEach(b=>b.classList.remove('selected'));document.getElementById('flowerNote').classList.remove('show');showScene(0);window.scrollTo({top:0,behavior:'smooth'})});
+function petals(count){
+  const symbols=['♡','✧','❀','♥'];
+  for(let i=0;i<count;i++){
+    const el=document.createElement('span');el.className='petal';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+'vw';el.style.fontSize=(12+Math.random()*22)+'px';el.style.opacity=.35+Math.random()*.55;
+    el.style.setProperty('--sway',((Math.random()-.5)*180)+'px');el.style.animationDuration=(4+Math.random()*5)+'s';
+    document.body.appendChild(el);setTimeout(()=>el.remove(),9500);
+  }
+}
+</script>
+</body>
+</html>
